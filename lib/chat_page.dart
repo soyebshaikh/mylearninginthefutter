@@ -4,21 +4,26 @@ import 'package:learningflutterproject/widgets/chat_bubble.dart';
 import 'package:learningflutterproject/widgets/chat_input.dart';
 
 class  ChatPage extends StatelessWidget {
+
   const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final username= ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Hi Soyeb',
+          'Hi $username',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
           IconButton(
               onPressed: () {
+
+          Navigator.pushReplacementNamed(context,'/');
+
                 print('Icon pressed !');
               },
 
