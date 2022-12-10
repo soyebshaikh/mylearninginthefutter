@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learningflutterproject/chat_page.dart';
+import 'package:learningflutterproject/utils/spaces.dart';
+import 'package:learningflutterproject/utils/textfield_style.dart';
+import 'package:learningflutterproject/widgets/login_text_field.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -49,8 +52,8 @@ class LoginPage extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.blue),
                 ),
-                Image.network(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2kiIIUjfhIlFjjei6vHQo3MyuXE7AO2N92NmtooRP1Hae7wH0qyTRTnrr48wtUkzhvg&usqp=CAU',
+                Image.asset(
+                  'assets/img.png',
                   height: 200,
                 ),
 
@@ -59,7 +62,8 @@ class LoginPage extends StatelessWidget {
                   key: _formkey,
                   child: Column(
                     children: [
-                      TextFormField(
+                      LoginTextField(
+                        hintText:"Enter your username",
                         validator: (value) {
                           if (value != null && value.isNotEmpty &&
                               value.length < 5) {
@@ -70,30 +74,20 @@ class LoginPage extends StatelessWidget {
                         },
                         controller: userNameController,
 
-                        decoration: InputDecoration(
-                          hintText: 'Add your Username',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder(),
-                        ),
+
                       ),
-                      SizedBox(
-                        height: 24,
-                      ),
+                      verticalSapcing(1),
 
 
-                      TextFormField(
+                      LoginTextField(
+                        hasAsterisks: true,
                         controller: passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Add your Username',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder(),
-                        ),
+                     hintText: 'Enter your password',
                       ),
                     ],
                   ),
                 ),
-
+                verticalSapcing(1),
 
                 ElevatedButton(
                     onPressed: () {
